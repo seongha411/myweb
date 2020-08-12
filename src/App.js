@@ -8,7 +8,7 @@ function App() {
     <div>
       <p> 안녕하세요!! </p>
       <Button primary> 하이하이~ </Button>
-      <Progress percent = {70} indicating/>
+      <Progress percent = {90} indicating/>
     </div>
   );
 }
