@@ -1,13 +1,31 @@
 import React from 'react';
 import {Button, Progress, Input} from 'semantic-ui-react'
 
-function Login() {
+function Login2() {
   return(
     <div>
     <Input/>
-    <Button primary> 로그인 </Button>
+    <Button onClick = { (e) => {
+      console.log(e)
+      alert(e.target.value)
+    }}> 로그인 </Button>
     </div>
   )
+}
+
+class Login extends React.Component {
+
+  render(){
+    return(
+      <div>
+      <Input/>
+      <Button onClick = { (e) => {
+        console.log(e)
+        alert(e.target.value)
+      } } > Login </Button>
+      </div>
+    )
+  }
 }
 
 function App() {
