@@ -3,13 +3,13 @@ import {Image} from 'semantic-ui-react'
 
 import Comments from './comment.js'
 
-import imagefile from "./campus_map_01.png"
+import campusmap from "./campus_map_01.png"
 
 
 function App() {
   return (
     <div>
-      <Image src = {imagefile} centered />
+      <Image src = {campusmap} centered />
       <Comments/>
     </div>
   );

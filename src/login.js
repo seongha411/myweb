@@ -1,4 +1,4 @@
-function Login2() {
+function Login3() {
   return(
     <div>
     <Input/>
