@@ -8,9 +8,9 @@ function SingleComment(detail) {
     <Comment>
       <Comment.Avatar src={human} />
       <Comment.Content>
-        <Comment.Author as="a">Matt</Comment.Author>
+        <Comment.Author as="a">방문자</Comment.Author>
         <Comment.Metadata>
-          <div>Today at 5:42PM</div>
+          <div>2020년</div>
         </Comment.Metadata>
         <Comment.Text>{detail.content}</Comment.Text>
         <Comment.Actions>
@@ -33,7 +33,7 @@ class Comments extends React.Component {
   render() {
     console.log(this.state.commentsList);
     return (
-      <Comment.Group style={{ marginLeft: "300px" }}>
+      <Comment.Group style={{ marginLeft: "" }}>
         <Header as="h3" dividing>
           Comments
         </Header>
@@ -55,6 +55,7 @@ class Comments extends React.Component {
               this.setState((prevState) => {
                 return {
                   commentsList: [...prevState.commentsList, this.state.inputContent],
+                  inputContent: ""
                 };
               })
             }
