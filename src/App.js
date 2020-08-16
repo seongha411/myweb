@@ -21,20 +21,20 @@ function App() {
               basic: true,
               color: "red",
               pointing: "left",
-              content: "2,048",
+              content: "0",
             }}
           />
           <Button
             basic
             color="blue"
-            content="Fork"
+            content="Share"
             icon="fork"
             label={{
               as: "a",
               basic: true,
               color: "blue",
               pointing: "left",
-              content: "2,048",
+              content: "0",
             }}
           />
         </Grid.Row>
@@ -47,9 +47,9 @@ function App() {
           Comment
         </Header>
       </Divider>
-      <Grid centered>
-        <Comments />
-      </Grid>
+
+      <Comments />
+
       <br />
       <Divider horizontal>
         <Header as="h4">
