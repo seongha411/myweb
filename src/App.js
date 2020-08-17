@@ -8,7 +8,7 @@ import campusmap from "./campus_map_01.png";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div>
       <Grid centered>
         <Grid.Row>
           <Image src={campusmap} centered />
@@ -21,7 +21,7 @@ function App() {
       <Divider horizontal>
         <Header as="h4">
           <Icon name="comment alternate" />
-          댓글을 달아주세요!
+          Comment
         </Header>
       </Divider>
 
