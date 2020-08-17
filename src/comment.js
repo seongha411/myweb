@@ -1,6 +1,6 @@
 import React from "react";
 import { Comment, Form, Button, Header, Icon } from "semantic-ui-react";
-import moment from "moment"
+import moment from "moment";
 
 import human from "./human.png";
 
@@ -11,9 +11,9 @@ function SingleComment(detail) {
         <Comment.Avatar src={human} />
         <Comment.Author as="a">방문자</Comment.Author>
         <Comment.Metadata>
-          <div>2020년</div>
+          <div>2{detail.info.time}</div>
         </Comment.Metadata>
-        <Comment.Text>{detail.content}</Comment.Text>
+        <Comment.Text>{detail.info.content}</Comment.Text>
       </Comment.Content>
     </Comment>
   );
@@ -24,6 +24,7 @@ class Comments extends React.Component {
     super();
     this.state = {
       inputContent: "",
+      inputTime: "",
       commentsList: [],
     };
   }
@@ -37,13 +38,13 @@ class Comments extends React.Component {
         </Header>
 
         {this.state.commentsList.map((comments) => (
-          <SingleComment content={comments} />
+          <SingleComment info={comments} />
         ))}
 
         <Form reply>
           <Form.TextArea
             value={this.state.inputContent}
-            placeholder={moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초")}
+            placeholder="댓글을 입력해주면 좋겠어요!"
             onChange={(e) => this.setState({ inputContent: e.target.value })}
           />
           <Button
@@ -56,7 +57,10 @@ class Comments extends React.Component {
                 return {
                   commentsList: [
                     ...prevState.commentsList,
-                    this.state.inputContent,
+                    {
+                      content: this.state.inputContent,
+                      time: moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초"),
+                    },
                   ],
                   inputContent: "",
                 };
