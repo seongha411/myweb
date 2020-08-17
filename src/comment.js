@@ -1,5 +1,6 @@
 import React from "react";
 import { Comment, Form, Button, Header, Icon } from "semantic-ui-react";
+import moment from "moment"
 
 import human from "./human.png";
 
@@ -42,7 +43,7 @@ class Comments extends React.Component {
         <Form reply>
           <Form.TextArea
             value={this.state.inputContent}
-            placeholder="댓글을 입력해주세요 ㅎㅎ"
+            placeholder={moment().format()}
             onChange={(e) => this.setState({ inputContent: e.target.value })}
           />
           <Button
