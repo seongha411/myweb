@@ -62,7 +62,7 @@ function App() {
             )
           }
         />
-        <Button circular color="google plus" icon="google plus" />
+        <Button circular color="google plus" icon="google plus" onClick = {()=> alert("준비중입니다.")}/ >
       </Grid>
     </div>
   );
