@@ -52,20 +52,26 @@ class Comments extends React.Component {
             labelPosition="left"
             icon="edit"
             primary
-            onClick={() =>
-              this.setState((prevState) => {
-                return {
-                  commentsList: [
-                    ...prevState.commentsList,
-                    {
-                      content: this.state.inputContent,
-                      time: moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초"),
-                    },
-                  ],
-                  inputContent: "",
-                };
-              })
-            }
+            onClick={() => {
+              if (this.state.inputContent != "") {
+                this.setState((prevState) => {
+                  return {
+                    commentsList: [
+                      ...prevState.commentsList,
+                      {
+                        content: this.state.inputContent,
+                        time: moment().format(
+                          "YYYY년 MM월 DD일 HH시 mm분 ss초"
+                        ),
+                      },
+                    ],
+                    inputContent: "",
+                  };
+                });
+              } else {
+                alert("내용을 입력해 주세요!");
+              }
+            }}
           />
         </Form>
       </Comment.Group>
