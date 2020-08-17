@@ -43,7 +43,7 @@ class Comments extends React.Component {
         <Form reply>
           <Form.TextArea
             value={this.state.inputContent}
-            placeholder={moment().format()}
+            placeholder={moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초")}
             onChange={(e) => this.setState({ inputContent: e.target.value })}
           />
           <Button
