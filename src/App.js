@@ -8,7 +8,7 @@ import campusmap from "./campus_map_01.png";
 
 function App() {
   return (
-    <div style = {{backgroundColor : "black"}}>
+    <div style={{ backgroundColor: "black" }}>
       <Grid centered>
         <Grid.Row>
           <Image src={campusmap} centered />
@@ -19,7 +19,7 @@ function App() {
       </Grid>
 
       <Divider horizontal>
-        <Header as="h4" style = {{color :"white"}}>
+        <Header as="h4" style={{ color: "white" }}>
           <Icon name="comment alternate" />
           Comment
         </Header>
@@ -33,8 +33,8 @@ function App() {
 
       <br />
       <Divider horizontal>
-        <Header as="h4" style = {{color: "white"}}>
-          <Icon name="mail" style = {{color: "white"}}/>
+        <Header as="h4" style={{ color: "white" }}>
+          <Icon name="mail" style={{ color: "white" }} />
           Contact Me
         </Header>
       </Divider>
@@ -62,7 +62,12 @@ function App() {
             )
           }
         />
-        <Button circular color="google plus" icon="google plus" onClick = {()=> alert("준비중입니다.")}/ >
+        <Button
+          circular
+          color="google plus"
+          icon="google plus"
+          onClick={() => alert("준비중입니다.")}
+        />
       </Grid>
     </div>
   );
