@@ -2,6 +2,8 @@ import React from "react";
 import { Comment, Form, Button, Header, Icon } from "semantic-ui-react";
 import moment from "moment";
 
+import { db } from "./fb.js";
+
 import human from "./human.png";
 
 function SingleComment(detail) {
@@ -10,7 +12,7 @@ function SingleComment(detail) {
       <Comment.Content>
         <Comment.Avatar src={human} />
         <Comment.Author as="a" style={{ color: "white", marginLeft: "5px" }}>
-         {detail.info.userName}
+          {detail.info.userName}
         </Comment.Author>
         <Comment.Metadata>
           <div style={{ color: "white" }}>2{detail.info.time}</div>
@@ -34,8 +36,22 @@ class Comments extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    db.collection("comments")
+      .get()
+      .then((ss) => {
+        let comments = [];
+        ss.forEach((doc) => {
+          comments.push(doc.data());
+        });
+        return comments;
+      })
+      .then((res) => {
+        this.setState({ commentsList: res });
+      });
+  };
+
   render() {
-    console.log(this.state.commentsList);
     return (
       <Comment.Group style={{ marginLeft: "0px" }}>
         <Header as="h3" dividing style={{ color: "white" }}>
@@ -59,21 +75,27 @@ class Comments extends React.Component {
             primary
             onClick={() => {
               if (this.state.inputContent != "") {
-                this.setState((prevState) => {
-                  return {
-                    commentsList: [
-                      ...prevState.commentsList,
-                      {
-                        content: this.state.inputContent,
-                        time: moment().format(
-                          "YYYY년 MM월 DD일 HH시 mm분 ss초"
-                        ),
-                        userName: this.props.userName,
-                      },
-                    ],
-                    inputContent: "",
-                  };
-                });
+                this.setState(
+                  (prevState) => {
+                    let newComment = {
+                      content: this.state.inputContent,
+                      time: moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초"),
+                      userName: this.props.userName,
+                    };
+                    return {
+                      commentsList: [...prevState.commentsList, newComment],
+                      inputCcontent: "",
+                    };
+                  },
+                  () =>
+                    db
+                      .collection("comments")
+                      .add(
+                        this.state.commentsList[
+                          this.state.commentsList.length - 1
+                        ]
+                      )
+                );
               } else {
                 alert("내용을 입력해 주세요!");
               }

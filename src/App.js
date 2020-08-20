@@ -15,7 +15,7 @@ import Comments from "./comment.js";
 import Buttons from "./buttons.js";
 import auth from "./fb.js";
 
-import campusmap from "./campus_map_01.png";
+import kbmaru from "./kbmaru.gif";
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -73,7 +73,7 @@ class App extends React.Component {
         </Divider>
         <Grid centered>
           <Grid.Row>
-            <Image src={campusmap} centered />
+            <Image src={kbmaru} centered size='huge'/>
           </Grid.Row>
           <Grid.Row>
             <Buttons />
