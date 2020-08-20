@@ -73,7 +73,7 @@ class App extends React.Component {
         </Divider>
         <Grid centered>
           <Grid.Row>
-            <Image src={kbmaru} centered size='huge'/>
+            <Image src={kbmaru} centered size="huge" />
           </Grid.Row>
           <Grid.Row>
             <Buttons />
@@ -89,7 +89,7 @@ class App extends React.Component {
 
         <Grid centered columns={3}>
           <Grid.Column>
-            <Comments />
+            <Comments userName={this.state.userName} />
           </Grid.Column>
         </Grid>
 

@@ -75,27 +75,24 @@ class Comments extends React.Component {
             primary
             onClick={() => {
               if (this.state.inputContent != "") {
-                this.setState(
-                  (prevState) => {
-                    let newComment = {
-                      content: this.state.inputContent,
-                      time: moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초"),
-                      userName: this.props.userName,
-                    };
-                    return {
-                      commentsList: [...prevState.commentsList, newComment],
-                      inputCcontent: "",
-                    };
-                  },
-                  () =>
-                    db
-                      .collection("comments")
-                      .add(
-                        this.state.commentsList[
-                          this.state.commentsList.length - 1
-                        ]
-                      )
-                );
+                let newComment = {
+                  content: this.state.inputContent,
+                  time: moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초"),
+                  userName: this.props.userName,
+                };
+                db.collection("comments")
+                  .add(newComment)
+                  .then((res) => {
+                    this.setState((prevState) => {
+                      return {
+                        commentsList: [
+                          ...prevState.commentsList,
+                          Object.assign(newComment, { id: res.id }),
+                        ],
+                        inputContent: "",
+                      };
+                    });
+                  });
               } else {
                 alert("내용을 입력해 주세요!");
               }
