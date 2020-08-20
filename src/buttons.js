@@ -29,8 +29,8 @@ class Buttons extends React.Component {
         />
         <Button
           color="blue"
-          content="Share"
-          icon="fork"
+          content="Visitors"
+          icon="address book"
           label={{
             as: "a",
             basic: true,
